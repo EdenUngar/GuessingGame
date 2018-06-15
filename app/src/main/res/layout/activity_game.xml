@@ -22,14 +22,14 @@
         android:id="@+id/instruction_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/guess_a_number"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/clue_textview"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/clue_textview"
         app:layout_constraintTop_toTopOf="parent" />
 

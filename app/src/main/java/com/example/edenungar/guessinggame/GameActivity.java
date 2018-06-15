@@ -1,5 +1,6 @@
 package com.example.edenungar.guessinggame;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
     private int numberOfGuesses = 0;
     private final int MAX_GUESS_COUNT = 4;
     //not 5 bc it starts at 0 (base 0) and so the fifth try would be #4
+    public static final String winningNumber = "WINNING_NUMBER";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +57,14 @@ public class GameActivity extends AppCompatActivity {
             int userGuess = Integer.parseInt(guess.getText().toString());
             if (userGuess > 100 || userGuess <= 0) {
                 clue.setText("enter a number between \n1 and 100");
+                //makes text above visible
                 clue.setVisibility(View.VISIBLE);
+                //clears out box to let user enter something else
                 guess.setText("");
             } else {
                 checkGuess(userGuess);
             }
-        } catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             clue.setText("enter a number");
             clue.setVisibility(View.VISIBLE);
         }
@@ -70,6 +74,29 @@ public class GameActivity extends AppCompatActivity {
     //Depending on the outcome it will change accordingly or take us to the ResultsActivity
     private void checkGuess(int userGuess) {
 
+        if (userGuess == generatedNumber) {
+            //goes to ResultsActivity, user has guessed correctly
+            Intent winner = new Intent(this, ResultsActivity.class);
+            startActivity(winner);
+        } else if (numberOfGuesses == MAX_GUESS_COUNT) {
+            //goes to ResultsActivity, user has run out of chances
+            Intent loser = new Intent(this, ResultsActivity.class);
+            loser.putExtra(winningNumber, generatedNumber);
+            startActivity(loser);
+        } else if (userGuess < generatedNumber) {
+            //updates clue TextView to say "higher", is VISIBLE, and increments numberOfGuesses by 1
+            clue.setText(R.string.higher);
+            clue.setVisibility(View.VISIBLE);
+            guess.setText("");
+            numberOfGuesses++;
+
+        } else if (userGuess > generatedNumber) {
+            //updates clue TextView to say "lower", and increments numberOfGuesses by 1
+            clue.setText(R.string.lower);
+            clue.setVisibility(View.VISIBLE);
+            guess.setText("");
+            numberOfGuesses++;
+        }
 
     }
 

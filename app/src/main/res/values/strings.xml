@@ -9,4 +9,5 @@
     <string name="you_won">YOU WON!</string>
     <string name="winning_number">the winning number was %1$d</string>
     <string name="play_again">play again</string>
+    <string name="lower">lower</string>
 </resources>

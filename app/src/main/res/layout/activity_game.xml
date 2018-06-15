@@ -10,19 +10,20 @@
         android:id="@+id/submit_guess_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="232dp"
+        android:layout_marginBottom="264dp"
         android:text="@string/check_guess"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/instruction_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="44dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/guess_a_number"
@@ -45,18 +46,17 @@
         android:textAlignment="center"
         android:textSize="30sp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/guess_edittext"
+        app:layout_constraintEnd_toEndOf="@+id/guess_edittext"
+        app:layout_constraintStart_toStartOf="@+id/guess_edittext"
         app:layout_constraintTop_toBottomOf="@+id/instruction_textview"
-        app:layout_constraintVertical_bias="0.506" />
+        app:layout_constraintVertical_bias="0.17" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/guess_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="36dp"
         android:ems="10"
         android:hint="@string/_1_100"
         android:inputType="number"

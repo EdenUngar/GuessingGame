@@ -13,4 +13,5 @@
     <string name="enter_number">enter a number</string>
     <string name="enter_number_1_to_100">enter a number between \n1 and 100</string>
     <string name="chances_left">%1$d chances left</string>
+    <string name="you_lost">YOU LOST!</string>
 </resources>

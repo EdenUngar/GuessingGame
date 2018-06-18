@@ -22,6 +22,8 @@ public class GameActivity extends AppCompatActivity {
     //not 5 bc it starts at 0 (base 0) and so the fifth try would be #4
     public static final String winningNumber = "WINNING_NUMBER";
 
+    //TODO fix restarting game
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +33,24 @@ public class GameActivity extends AppCompatActivity {
         clue = findViewById(R.id.clue_textview);
         guess = findViewById(R.id.guess_edittext);
 
-        //generates a random number between 1 and 100
-        generatedNumber = (int) Math.ceil(Math.random() * 100);
-
 //        Toast.makeText(this, Integer.toString(generatedNumber), Toast.LENGTH_SHORT).show();
 
         setListener();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //took this line from onCreate so we could restart from the ResultsActivity
+        //generates a random number between 1 and 100
+        generatedNumber = (int) Math.ceil(Math.random() * 100);
+
+        //added these to reset the game after the ResultsActivity
+        numberOfGuesses = 0;
+        clue.setVisibility(View.INVISIBLE);
+        guess.setText("");
 
     }
 
@@ -104,7 +118,7 @@ public class GameActivity extends AppCompatActivity {
             //how I did it
 //            Toast.makeText(this, Integer.toString(5 - numberOfGuesses) + " guesses left", Toast.LENGTH_SHORT).show();
             //how the class did it
-            Toast.makeText(this, getString(R.string.chances_left,(5 - numberOfGuesses)), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.chances_left, (5 - numberOfGuesses)), Toast.LENGTH_SHORT).show();
         }
     }
 

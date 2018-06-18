@@ -39,10 +39,9 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/restart_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/number_textview"
-        app:layout_constraintVertical_bias="0.509"
+        app:layout_constraintVertical_bias="0.301"
         app:srcCompat="@drawable/thumb" />
 
     <Button

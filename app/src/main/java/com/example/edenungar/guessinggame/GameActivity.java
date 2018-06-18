@@ -56,7 +56,7 @@ public class GameActivity extends AppCompatActivity {
         try {
             int userGuess = Integer.parseInt(guess.getText().toString());
             if (userGuess > 100 || userGuess <= 0) {
-                clue.setText("enter a number between \n1 and 100");
+                clue.setText(R.string.enter_number_1_to_100);
                 //makes text above visible
                 clue.setVisibility(View.VISIBLE);
                 //clears out box to let user enter something else
@@ -65,7 +65,7 @@ public class GameActivity extends AppCompatActivity {
                 checkGuess(userGuess);
             }
         } catch (NumberFormatException nfe) {
-            clue.setText("enter a number");
+            clue.setText(R.string.enter_number);
             clue.setVisibility(View.VISIBLE);
         }
     }
@@ -89,15 +89,23 @@ public class GameActivity extends AppCompatActivity {
             clue.setVisibility(View.VISIBLE);
             guess.setText("");
             numberOfGuesses++;
-
+            //to show how many tries you have left
+            //how I did it
+//            Toast.makeText(this, Integer.toString(5 - numberOfGuesses) + " guesses left", Toast.LENGTH_SHORT).show();
+            //how the class did it
+            Toast.makeText(this, getString(R.string.chances_left, (5 - numberOfGuesses)), Toast.LENGTH_SHORT).show();
         } else if (userGuess > generatedNumber) {
             //updates clue TextView to say "lower", and increments numberOfGuesses by 1
             clue.setText(R.string.lower);
             clue.setVisibility(View.VISIBLE);
             guess.setText("");
             numberOfGuesses++;
+            //displays number of guesses left as a toast
+            //how I did it
+//            Toast.makeText(this, Integer.toString(5 - numberOfGuesses) + " guesses left", Toast.LENGTH_SHORT).show();
+            //how the class did it
+            Toast.makeText(this, getString(R.string.chances_left,(5 - numberOfGuesses)), Toast.LENGTH_SHORT).show();
         }
-
     }
 
 
